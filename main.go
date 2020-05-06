@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
-const version = "v1.0.0"
+const version = "v1.1.0"
+const logFile = "time.log"
 
 func main() {
 	clearScreen()
@@ -18,7 +22,7 @@ func main() {
 		case 1:
 			startTime(25, 5, false)
 		case 9:
-			fmt.Println("Not implemented")
+			showLogs()
 		case 0:
 			clearScreen()
 			os.Exit(0)
@@ -54,6 +58,18 @@ func startTime(pomoTime int, pauseTime int, exit bool) {
 	minutes := pomoTime
 	seconds := 0
 
+	// code block that captures CTRL+C
+	c := make(chan os.Signal)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		<-c
+		fmt.Println("Stopping forced Pomodoro")
+		registerLogs("Stop Pomodoro --force")
+		os.Exit(0)
+	}()
+
+	registerLogs("Start Pomodoro")
+
 	for {
 		clearScreen()
 		fmt.Println(minutes, ":", seconds)
@@ -63,9 +79,11 @@ func startTime(pomoTime int, pauseTime int, exit bool) {
 			if exit {
 				break
 			} else {
+				registerLogs("Stop Pomodoro")
 				minutes = pauseTime
 				seconds = 0
 				exit = true
+				registerLogs("Start Break")
 			}
 		}
 
@@ -77,5 +95,33 @@ func startTime(pomoTime int, pauseTime int, exit bool) {
 		}
 
 		time.Sleep(1 * time.Second)
+	}
+
+	registerLogs("Stop Break")
+}
+
+// Function to show logs registered by pomodoro activity
+func showLogs() {
+	clearScreen()
+	fmt.Println("Show the last logs...")
+	fmt.Println("")
+
+	file, err := ioutil.ReadFile(logFile)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println(string(file))
+	}
+}
+
+func registerLogs(lineRegister string) {
+	file, err := os.OpenFile(logFile, os.O_RDWR|os.O_APPEND|os.O_CREATE, 0755)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		file.WriteString(time.Now().Format("2006/01/02 03:04:05 PM") + " | " + lineRegister + "\n")
+		file.Close()
 	}
 }
