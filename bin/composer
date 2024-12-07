@@ -1,2 +1,0 @@
-command="docker exec -it pomodoro-app composer "$*""
-$command
