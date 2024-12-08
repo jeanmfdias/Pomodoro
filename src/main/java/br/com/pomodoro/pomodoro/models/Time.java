@@ -1,4 +1,4 @@
-package br.pomodoro.models;
+package br.com.pomodoro.pomodoro.models;
 
 public class Time {
     private int startTimestamp;
