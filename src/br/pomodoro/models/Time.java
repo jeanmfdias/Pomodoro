@@ -1,3 +1,5 @@
+package br.pomodoro.models;
+
 public class Time {
     private int startTimestamp;
     private int endTimestamp;
@@ -36,10 +38,10 @@ public class Time {
         this.user = user;
     }
 
-    void showMessage() {
+    public void showMessage() {
         System.out.println("Start Timestamp: " + startTimestamp);
         System.out.println("End Timestamp: " + endTimestamp);
         System.out.println("Description: " + description);
-        System.out.println("User name: " + user.getName());
+        System.out.println("br.pomodoro.models.User name: " + user.getName());
     }
 }
