@@ -42,16 +42,22 @@ public class Time {
     }
 
     public void showMessage() {
-        System.out.println("--------------------------------------------------");
-        System.out.println("Description: " + this.description);
-        System.out.println("Start Timestamp: " + this.getStartTimestampFormatted());
-        System.out.println("End Timestamp: " + this.getEndTimestampFormatted());
-        System.out.println("--------------------------------------------------");
-        System.out.println("User name: " + this.user.getName());
-        System.out.println("User e-mail: " + this.user.getEmail());
-        System.out.println("--------------------------------------------------");
-        System.out.println("Duration: " + this.getDuration());
-        System.out.println("--------------------------------------------------");
+        String message = """
+                --------------------------------------------------
+                Task description: %s
+                Start time (%s)
+                    until (%s)
+                    Total: %s
+                User name: %s | e-mail: %s
+                --------------------------------------------------
+                """.formatted(
+                        this.description,
+                        this.getStartTimestampFormatted(),
+                        this.getEndTimestampFormatted(),
+                        this.getDuration(),
+                        this.user.getName(),
+                        this.user.getEmail());
+        System.out.println(message);
     }
 
     public String getStartTimestampFormatted() {
