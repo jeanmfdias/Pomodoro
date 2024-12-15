@@ -2,6 +2,7 @@ package br.com.pomodoro.pomodoro.models;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 
 public class Time {
     private long startTimestamp;
@@ -41,25 +42,6 @@ public class Time {
         this.user = user;
     }
 
-    public void showMessage() {
-        String message = """
-                --------------------------------------------------
-                Task description: %s
-                Start time (%s)
-                    until (%s)
-                    Total: %s
-                User name: %s | e-mail: %s
-                --------------------------------------------------
-                """.formatted(
-                        this.description,
-                        this.getStartTimestampFormatted(),
-                        this.getEndTimestampFormatted(),
-                        this.getDuration(),
-                        this.user.getName(),
-                        this.user.getEmail());
-        System.out.println(message);
-    }
-
     public String getStartTimestampFormatted() {
         if (this.startTimestamp != 0) {
             Timestamp time = new Timestamp(this.startTimestamp);
@@ -80,11 +62,30 @@ public class Time {
 
     public String getDuration() {
         if (this.startTimestamp != 0 && this.endTimestamp != 0) {
-            long diff = this.endTimestamp - this.startTimestamp;
-            Timestamp time = new Timestamp(diff);
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-            return format.format(time);
+            Timestamp startTime = new Timestamp(this.startTimestamp);
+            Timestamp endTime = new Timestamp(this.endTimestamp);
+            Duration duration = Duration.between(startTime.toInstant(), endTime.toInstant());
+            return duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + duration.toSecondsPart();
         }
         return "";
+    }
+
+    @Override
+    public String toString() {
+        return """
+                --------------------------------------------------
+                Task description: %s
+                Start time (%s)
+                    until (%s)
+                    Total: %s
+                User name: %s | e-mail: %s
+                --------------------------------------------------
+                """.formatted(
+                this.description,
+                this.getStartTimestampFormatted(),
+                this.getEndTimestampFormatted(),
+                this.getDuration(),
+                this.user.getName(),
+                this.user.getEmail());
     }
 }

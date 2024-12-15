@@ -4,6 +4,7 @@ import br.com.pomodoro.pomodoro.models.Time;
 import br.com.pomodoro.pomodoro.models.User;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TimeService {
@@ -42,5 +43,12 @@ public class TimeService {
         time.setStartTimestamp(startTime.getTime());
 
         return time;
+    }
+
+    public void listAll(ArrayList<Time> list) {
+        System.out.println("List all tasks:");
+        for (Time time : list) {
+            System.out.println(time);
+        }
     }
 }
