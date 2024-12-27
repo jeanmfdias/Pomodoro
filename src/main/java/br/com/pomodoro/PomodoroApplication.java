@@ -8,19 +8,18 @@ import br.com.pomodoro.services.UserService;
 
 import javax.swing.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PomodoroApplication {
 	public static void main(String[] args) {
-		Object[] menu = MenuService.generate();
-		int choice = -1;
 		TimeService service = new TimeService();
 		UserService userService = new UserService();
+		Object[] menu = MenuService.generate();
 		Time time = new Time();
-		ArrayList<Time> listTime = new ArrayList<>();
 		User user = null;
+		List<Time> listTime = new ArrayList<>();
+		Map<User, List<Time>> base = new HashMap<>();
+		int choice = -1;
 
 		while (choice != 0) {
 			choice = JOptionPane.showOptionDialog(null, "Select an option", "Pomodoro Menu",

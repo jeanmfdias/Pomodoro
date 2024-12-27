@@ -5,8 +5,7 @@ import br.com.pomodoro.models.User;
 
 import javax.swing.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 public class TimeService {
     public Time create(User user) {
@@ -21,7 +20,7 @@ public class TimeService {
         return time;
     }
 
-    public void listAll(ArrayList<Time> list) {
+    public void listAll(List<Time> list) {
         String message = "List all tasks:\n";
         for (Time time : list) {
             message += time + "\n";
