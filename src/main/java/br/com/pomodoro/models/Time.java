@@ -1,20 +1,30 @@
-package br.com.pomodoro.pomodoro.models;
+package br.com.pomodoro.models;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 
 public class Time {
-    private long startTimestamp;
-    private long endTimestamp;
+    private Long startTimestamp;
+    private Long endTimestamp;
     private String description;
     private User user;
 
-    public long getStartTimestamp() {
+    public Time(Long startTimestamp, String description, User user) {
+        this.startTimestamp = startTimestamp;
+        this.description = description;
+        this.user = user;
+    }
+
+    public Time() {
+
+    }
+
+    public Long getStartTimestamp() {
         return startTimestamp;
     }
 
-    public long getEndTimestamp() {
+    public Long getEndTimestamp() {
         return endTimestamp;
     }
 
@@ -26,11 +36,11 @@ public class Time {
         return user;
     }
 
-    public void setStartTimestamp(long startTimestamp) {
+    public void setStartTimestamp(Long startTimestamp) {
         this.startTimestamp = startTimestamp;
     }
 
-    public void setEndTimestamp(long endTimestamp) {
+    public void setEndTimestamp(Long endTimestamp) {
         this.endTimestamp = endTimestamp;
     }
 

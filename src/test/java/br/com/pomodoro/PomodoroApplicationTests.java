@@ -1,4 +1,4 @@
-package br.com.pomodoro.pomodoro;
+package br.com.pomodoro;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

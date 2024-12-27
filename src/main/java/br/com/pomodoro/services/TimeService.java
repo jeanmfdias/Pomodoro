@@ -1,7 +1,7 @@
-package br.com.pomodoro.pomodoro.services;
+package br.com.pomodoro.services;
 
-import br.com.pomodoro.pomodoro.models.Time;
-import br.com.pomodoro.pomodoro.models.User;
+import br.com.pomodoro.models.Time;
+import br.com.pomodoro.models.User;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
