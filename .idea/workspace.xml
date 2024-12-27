@@ -7,8 +7,8 @@
     <list default="true" id="93e2ccd9-fd2b-4caa-a12f-70d60d46b9d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/PomodoroApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/PomodoroApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

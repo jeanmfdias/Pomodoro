@@ -28,4 +28,9 @@ public class User {
     public String getEmail() {
         return this.email;
     }
+
+    @Override
+    public String toString() {
+        return "%s (%s)".formatted(this.getName(), this.getEmail());
+    }
 }

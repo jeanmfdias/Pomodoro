@@ -1,6 +1,11 @@
 package br.com.pomodoro.services;
 
 import br.com.pomodoro.models.Menu;
+import br.com.pomodoro.models.Time;
+import br.com.pomodoro.models.User;
+
+import java.util.List;
+import java.util.Map;
 
 public class MenuService {
     public static Object[] generate() {
@@ -15,5 +20,15 @@ public class MenuService {
         menuItems[6] = new Menu("List All Users");
 
         return menuItems;
+    }
+
+    public static Object[] dynamicUserMenu(Map<User, List<Time>> base) {
+        Object[] newUsers = new Object[base.size()];
+        int i = 0;
+        for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
+            newUsers[i] = entry.getKey();
+            i++;
+        }
+        return newUsers;
     }
 }

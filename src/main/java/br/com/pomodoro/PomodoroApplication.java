@@ -15,11 +15,13 @@ public class PomodoroApplication {
 		TimeService service = new TimeService();
 		UserService userService = new UserService();
 		Object[] menu = MenuService.generate();
+		Object[] userList = null;
 		Time time = new Time();
 		User user = null;
 		List<Time> listTime = new ArrayList<>();
 		Map<User, List<Time>> base = new HashMap<>();
 		int choice = -1;
+		int userChoice = -1;
 
 		while (choice != 0) {
 			choice = JOptionPane.showOptionDialog(null, "Select an option", "Pomodoro Menu",
@@ -31,8 +33,13 @@ public class PomodoroApplication {
 							JOptionPane.INFORMATION_MESSAGE);
 					break;
 				case 1:
+					userChoice = JOptionPane.showOptionDialog(null, "Select an user", "Pomodoro - User",
+							JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, userList, 0);
+					user = (User) userList[userChoice];
 					if (user != null) {
 						time = service.create(user);
+						listTime = base.computeIfAbsent(user, u -> new ArrayList<>());
+						listTime.add(time);
 					} else {
 						JOptionPane.showMessageDialog(null, "User is required!",
 								"Pomodoro Error", JOptionPane.ERROR_MESSAGE);
@@ -52,6 +59,7 @@ public class PomodoroApplication {
 				case 5:
 					user = userService.create();
 					base.put(user, new ArrayList<>());
+					userList = MenuService.dynamicUserMenu(base);
 					break;
 				case 6:
 					userService.list(base);
