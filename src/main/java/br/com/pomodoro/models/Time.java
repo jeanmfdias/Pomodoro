@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 
 public class Time {
-    private Long startTimestamp;
-    private Long endTimestamp;
+    private long startTimestamp;
+    private long endTimestamp;
     private String description;
     private User user;
 
-    public Time(Long startTimestamp, String description, User user) {
+    public Time(long startTimestamp, String description, User user) {
         this.startTimestamp = startTimestamp;
         this.description = description;
         this.user = user;
@@ -20,11 +20,11 @@ public class Time {
 
     }
 
-    public Long getStartTimestamp() {
+    public long getStartTimestamp() {
         return startTimestamp;
     }
 
-    public Long getEndTimestamp() {
+    public long getEndTimestamp() {
         return endTimestamp;
     }
 
@@ -36,11 +36,11 @@ public class Time {
         return user;
     }
 
-    public void setStartTimestamp(Long startTimestamp) {
+    public void setStartTimestamp(long startTimestamp) {
         this.startTimestamp = startTimestamp;
     }
 
-    public void setEndTimestamp(Long endTimestamp) {
+    public void setEndTimestamp(long endTimestamp) {
         this.endTimestamp = endTimestamp;
     }
 

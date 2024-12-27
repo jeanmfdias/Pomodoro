@@ -3,40 +3,16 @@ package br.com.pomodoro.services;
 import br.com.pomodoro.models.Time;
 import br.com.pomodoro.models.User;
 
+import javax.swing.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TimeService {
-    public Time create() {
-        Scanner reader = new Scanner(System.in);
-        User user = new User();
+    public Time create(User user) {
         Time time = new Time();
 
-        reader.reset();
-        System.out.print("Type your name: ");
-        String name = reader.nextLine().trim();
-
-        if (name.isEmpty()) {
-            System.out.println("Name is required!");
-            return null;
-        }
-
-        reader.reset();
-        System.out.print("Type your e-mail: ");
-        String email = reader.nextLine().trim();
-
-        if (email.isEmpty()) {
-            System.out.println("Email is required!");
-            return null;
-        }
-
-        user.setName(name);
-        user.setEmail(email);
-
-        reader.reset();
-        System.out.print("Type task title: ");
-        String title = reader.nextLine().trim();
+        String title = JOptionPane.showInputDialog("Type task title:");
         time.setUser(user);
         time.setDescription(title);
         Timestamp startTime = new Timestamp(System.currentTimeMillis());
@@ -46,9 +22,10 @@ public class TimeService {
     }
 
     public void listAll(ArrayList<Time> list) {
-        System.out.println("List all tasks:");
+        String message = "List all tasks:\n";
         for (Time time : list) {
-            System.out.println(time);
+            message += time + "\n";
         }
+        JOptionPane.showMessageDialog(null, message);
     }
 }
