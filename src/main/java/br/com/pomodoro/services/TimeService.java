@@ -68,18 +68,25 @@ public class TimeService {
         String messageToSave = "";
         List<Time> list;
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
-        String fileName = String.valueOf(timeStamp.getYear()) + String.valueOf(timeStamp.getMonth())
+        String fileName = "./tmp/" + String.valueOf(timeStamp.getYear()) + String.valueOf(timeStamp.getMonth())
                 + String.valueOf(timeStamp.getDay()) + "_pomodoro.log";
         File file = new File(fileName);
+        boolean success = false;
 
         for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
             list = entry.getValue();
             for (Time time : list) {
                 messageToSave = time.getStartTimestamp() + ": " + time.getUser().getName() + ": "
                         + time.getDescription() + "(" + time.getDuration() + ")";
-                this.logService.save(messageToSave, file);
+                success = this.logService.save(messageToSave, file);
+                if (!success) {
+                    break;
+                }
+            }
+            if (!success) {
+                break;
             }
         }
-        return false;
+        return success;
     }
 }
