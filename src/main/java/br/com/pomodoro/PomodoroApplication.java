@@ -19,8 +19,8 @@ public class PomodoroApplication {
 		Object[] menu = MenuService.generate();
 		Object[] userListMenu = null;
 		Time time = new Time();
-		User user = null;
-		List<Time> listTime = new ArrayList<>();
+		User user;
+		List<Time> listTime;
 		Map<User, List<Time>> base = new HashMap<>();
 		int choice = -1;
 
@@ -30,6 +30,8 @@ public class PomodoroApplication {
 
 			try {
 				switch (choice) {
+					case JOptionPane.CLOSED_OPTION:
+						choice = 0;
 					case 0:
 						JOptionPane.showMessageDialog(null, "Bye!", "Pomodoro",
 								JOptionPane.INFORMATION_MESSAGE);
