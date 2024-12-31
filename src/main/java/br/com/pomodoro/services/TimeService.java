@@ -66,11 +66,12 @@ public class TimeService {
 
     public boolean saveLog(Map<User, List<Time>> base) {
         String messageToSave = "";
-        List<Time> list = new ArrayList<>();
+        List<Time> list;
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
         String fileName = String.valueOf(timeStamp.getYear()) + String.valueOf(timeStamp.getMonth())
                 + String.valueOf(timeStamp.getDay()) + "_pomodoro.log";
         File file = new File(fileName);
+
         for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
             list = entry.getValue();
             for (Time time : list) {

@@ -12,8 +12,8 @@ public class LogService implements LogInterface {
     @Override
     public boolean save(String message, File file) {
         try {
-            FileWriter writer = new FileWriter(file);
-            writer.append(message);
+            FileWriter writer = new FileWriter(file, true);
+            writer.append("\n" + message);
             writer.close();
             return true;
         } catch (Exception e) {
