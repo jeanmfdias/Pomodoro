@@ -6,7 +6,6 @@ import br.com.pomodoro.models.User;
 import javax.swing.*;
 import java.io.File;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,16 +22,7 @@ public class TimeService {
         return (User) userListMenu[userChoice];
     }
 
-    public Time formTime(Map<User, List<Time>> base) {
-        List<Time> listTime = new ArrayList<>();
-        for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
-            for (Time t : entry.getValue()) {
-                if (t.getEndTimestamp() == 0) {
-                    listTime.add(t);
-
-                }
-            }
-        }
+    public Time formTime(User user, List<Time> listTime) {
         Object[] timeListMenu = new Object[listTime.size()];
         int i = 0;
         for (Time t : listTime) {
@@ -56,12 +46,12 @@ public class TimeService {
         return time;
     }
 
-    public void listAll(Map<User, List<Time>> base) {
+    public String getAll(Map<User, List<Time>> base) {
         String message = "List all tasks:\n";
         for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
             message += entry.getValue() + "\n";
         }
-        JOptionPane.showMessageDialog(null, message);
+        return message;
     }
 
     public boolean saveLog(Map<User, List<Time>> base) {

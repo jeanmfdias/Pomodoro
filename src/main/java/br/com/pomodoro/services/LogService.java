@@ -2,7 +2,6 @@ package br.com.pomodoro.services;
 
 import br.com.pomodoro.contracts.services.LogInterface;
 
-import javax.imageio.IIOException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

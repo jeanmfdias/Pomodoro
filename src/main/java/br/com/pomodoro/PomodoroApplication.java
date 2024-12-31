@@ -1,31 +1,19 @@
 package br.com.pomodoro;
 
-import br.com.pomodoro.exceptions.LogException;
 import br.com.pomodoro.models.Time;
 import br.com.pomodoro.models.User;
 import br.com.pomodoro.services.MenuService;
-import br.com.pomodoro.services.TimeService;
-import br.com.pomodoro.services.UserService;
-import org.apache.logging.log4j.LoggingException;
 
 import javax.swing.*;
-import java.sql.Timestamp;
 import java.util.*;
 
 public class PomodoroApplication {
 	public static void main(String[] args) {
-		TimeService service = new TimeService();
-		UserService userService = new UserService();
-		Object[] menuItens = MenuService.generate();
-		Object[] userListMenu = null;
-		Time time = new Time();
-		User user;
-		List<Time> listTime;
 		Map<User, List<Time>> base = new HashMap<>();
 		int choice = -1;
 
 		while (choice != 0) {
-			choice = MenuService.menu(menuItens);
+			choice = MenuService.menu();
 
 			try {
 				switch (choice) {
@@ -35,49 +23,25 @@ public class PomodoroApplication {
 						MenuService.bye();
 						break;
 					case 1:
-						user = service.formUser(userListMenu);
-						if (user != null) {
-							time = service.create(user);
-							listTime = base.computeIfAbsent(user, u -> new ArrayList<>());
-							listTime.add(time);
-						} else {
-							JOptionPane.showMessageDialog(null, "User is required!",
-									"Pomodoro Error", JOptionPane.ERROR_MESSAGE);
-						}
+						base = MenuService.startTime(base);
 						break;
 					case 2:
-						Timestamp endtime = new Timestamp(System.currentTimeMillis());
-						time = service.formTime(base);
-						if (time != null) {
-							time.setEndTimestamp(endtime.getTime());
-						} else {
-							JOptionPane.showMessageDialog(null, "Time not found!",
-									"Pomodoro Error", JOptionPane.ERROR_MESSAGE);
-						}
-
+						base = MenuService.endTime(base);
 						break;
 					case 3:
-						JOptionPane.showMessageDialog(null, time);
+						MenuService.getLastTime(base);
 						break;
 					case 4:
-						service.listAll(base);
+						MenuService.getAllTime(base);
 						break;
 					case 5:
-						user = userService.create();
-						base.put(user, new ArrayList<>());
-						userListMenu = MenuService.dynamicUserMenu(base);
+						base = MenuService.createUser();
 						break;
 					case 6:
-						userService.list(base);
+						MenuService.getAllUSers(base);
 						break;
 					case 7:
-						boolean success = service.saveLog(base);
-						if (success) {
-							JOptionPane.showMessageDialog(null, "Log save with success!",
-									"Pomodoro", JOptionPane.INFORMATION_MESSAGE);
-						} else {
-							throw new LogException("Error on save log!");
-						}
+						MenuService.saveLog(base);
 						break;
 					default:
 						throw new IllegalArgumentException("Invalid option!");
