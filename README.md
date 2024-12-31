@@ -9,3 +9,4 @@
 - 4 - Report All Tasks
 - 5 - Add New user
 - 6 - List All Users
+- 7 - Save Log

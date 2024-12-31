@@ -4,12 +4,19 @@ import br.com.pomodoro.models.Time;
 import br.com.pomodoro.models.User;
 
 import javax.swing.*;
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class TimeService {
+    private LogService logService;
+
+    public TimeService() {
+        this.logService = new LogService();
+    }
+
     public User formUser(Object[] userListMenu) {
         int userChoice = JOptionPane.showOptionDialog(null, "Select an user", "Pomodoro - User",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, userListMenu, 0);
@@ -55,5 +62,23 @@ public class TimeService {
             message += entry.getValue() + "\n";
         }
         JOptionPane.showMessageDialog(null, message);
+    }
+
+    public boolean saveLog(Map<User, List<Time>> base) {
+        String messageToSave = "";
+        List<Time> list = new ArrayList<>();
+        Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+        String fileName = String.valueOf(timeStamp.getYear()) + String.valueOf(timeStamp.getMonth())
+                + String.valueOf(timeStamp.getDay()) + "_pomodoro.log";
+        File file = new File(fileName);
+        for (Map.Entry<User, List<Time>> entry : base.entrySet()) {
+            list = entry.getValue();
+            for (Time time : list) {
+                messageToSave = time.getStartTimestamp() + ": " + time.getUser().getName() + ": "
+                        + time.getDescription() + "(" + time.getDuration() + ")";
+                this.logService.save(messageToSave, file);
+            }
+        }
+        return false;
     }
 }

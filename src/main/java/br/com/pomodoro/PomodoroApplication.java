@@ -67,6 +67,9 @@ public class PomodoroApplication {
 				case 6:
 					userService.list(base);
 					break;
+				case 7:
+					service.saveLog(base);
+					break;
 				default:
 					JOptionPane.showMessageDialog(null, "Invalid option!", "Pomodoro Error",
 							JOptionPane.ERROR_MESSAGE);
