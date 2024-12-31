@@ -16,7 +16,7 @@ public class PomodoroApplication {
 	public static void main(String[] args) {
 		TimeService service = new TimeService();
 		UserService userService = new UserService();
-		Object[] menu = MenuService.generate();
+		Object[] menuItens = MenuService.generate();
 		Object[] userListMenu = null;
 		Time time = new Time();
 		User user;
@@ -25,16 +25,14 @@ public class PomodoroApplication {
 		int choice = -1;
 
 		while (choice != 0) {
-			choice = JOptionPane.showOptionDialog(null, "Select an option", "Pomodoro Menu",
-					JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, menu, 0);
+			choice = MenuService.menu(menuItens);
 
 			try {
 				switch (choice) {
 					case JOptionPane.CLOSED_OPTION:
 						choice = 0;
 					case 0:
-						JOptionPane.showMessageDialog(null, "Bye!", "Pomodoro",
-								JOptionPane.INFORMATION_MESSAGE);
+						MenuService.bye();
 						break;
 					case 1:
 						user = service.formUser(userListMenu);

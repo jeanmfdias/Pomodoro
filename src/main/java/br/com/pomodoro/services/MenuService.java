@@ -4,6 +4,7 @@ import br.com.pomodoro.models.Menu;
 import br.com.pomodoro.models.Time;
 import br.com.pomodoro.models.User;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 
@@ -31,5 +32,15 @@ public class MenuService {
             i++;
         }
         return newUsers;
+    }
+
+    public static void bye() {
+        JOptionPane.showMessageDialog(null, "Bye!", "Pomodoro",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static int menu(Object[] menuItens) {
+        return JOptionPane.showOptionDialog(null, "Select an option", "Pomodoro Menu",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, menuItens, 0);
     }
 }
