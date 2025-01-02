@@ -6,8 +6,7 @@ import br.com.pomodoro.models.User;
 import javax.swing.*;
 import java.io.File;
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TimeService {
     private LogService logService;
@@ -23,15 +22,28 @@ public class TimeService {
     }
 
     public Time formTime(User user, List<Time> listTime) {
-        Object[] timeListMenu = new Object[listTime.size()];
         int i = 0;
+        List<Time> availableTime = new ArrayList<>();
         for (Time t : listTime) {
-            timeListMenu[i] = t.getDescription();
-            i++;
+            if (t.getEndTimestamp() == 0) {
+                i++;
+            }
+        }
+        Object[] timeListMenu = new Object[i];
+        i = 0;
+        for (Time t : listTime) {
+            if (t.getEndTimestamp() == 0) {
+                timeListMenu[i] = t.getDescription();
+                availableTime.add(t);
+                i++;
+            }
+        }
+        if (i == 0) {
+            throw new RuntimeException("Tasks not found!");
         }
         int timeChoice = JOptionPane.showOptionDialog(null, "Select an time to close", "Pomodoro - Time",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, timeListMenu, 0);
-        return listTime.get(timeChoice);
+        return availableTime.get(timeChoice);
     }
 
     public Time create(User user) {
