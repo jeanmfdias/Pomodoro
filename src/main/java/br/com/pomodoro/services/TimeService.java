@@ -21,7 +21,7 @@ public class TimeService {
         return (User) userListMenu[userChoice];
     }
 
-    public Time formTime(User user, List<Time> listTime) {
+    public Time formTime(List<Time> listTime) {
         int i = 0;
         List<Time> availableTime = new ArrayList<>();
         for (Time t : listTime) {

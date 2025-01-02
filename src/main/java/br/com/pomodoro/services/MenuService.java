@@ -69,7 +69,7 @@ public class MenuService {
         User user = timeService.formUser(userList);
         if (user != null) {
             List<Time> listTime = base.computeIfAbsent(user, u -> new ArrayList<>());
-            Time time = timeService.formTime(user, listTime);
+            Time time = timeService.formTime(listTime);
             if (time != null) {
                 time.setEndTimestamp(endtime.getTime());
             } else {
