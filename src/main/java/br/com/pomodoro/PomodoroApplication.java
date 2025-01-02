@@ -35,7 +35,7 @@ public class PomodoroApplication {
 						MenuService.getAllTime(base);
 						break;
 					case 5:
-						base = MenuService.createUser();
+						base = MenuService.createUser(base);
 						break;
 					case 6:
 						MenuService.getAllUSers(base);

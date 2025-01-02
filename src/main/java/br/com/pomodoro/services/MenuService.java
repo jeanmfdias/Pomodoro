@@ -101,9 +101,8 @@ public class MenuService {
         JOptionPane.showMessageDialog(null, message, "Pomodoro", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static Map<User, List<Time>> createUser() {
+    public static Map<User, List<Time>> createUser(Map<User, List<Time>> base) {
         UserService userService = new UserService();
-        Map<User, List<Time>> base = new HashMap<>();
         User user = userService.create();
         base.put(user, new ArrayList<>());
         return base;
