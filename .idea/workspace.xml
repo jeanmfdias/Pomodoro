@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93e2ccd9-fd2b-4caa-a12f-70d60d46b9d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/PomodoroApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/PomodoroApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/models/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/application/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/models/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/time/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/application/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/time/TimeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/pomodoro/domains/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +67,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="br.com.pomodoro.PomodoroApplication" />
-      <module name="Pomodoro" />
+      <module name="pomodoro" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="br.com.pomodoro.*" />
