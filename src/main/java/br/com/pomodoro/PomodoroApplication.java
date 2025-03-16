@@ -1,8 +1,8 @@
 package br.com.pomodoro;
 
-import br.com.pomodoro.models.Time;
-import br.com.pomodoro.models.User;
-import br.com.pomodoro.services.MenuService;
+import br.com.pomodoro.domains.time.Time;
+import br.com.pomodoro.domains.user.User;
+import br.com.pomodoro.domains.application.MenuService;
 
 import javax.swing.*;
 import java.util.*;

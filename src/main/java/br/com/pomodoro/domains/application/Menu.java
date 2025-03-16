@@ -1,4 +1,4 @@
-package br.com.pomodoro.models;
+package br.com.pomodoro.domains.application;
 
 public class Menu {
     private String name;

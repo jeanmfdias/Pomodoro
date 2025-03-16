@@ -1,14 +1,14 @@
-package br.com.pomodoro.services;
+package br.com.pomodoro.domains.application;
 
+import br.com.pomodoro.domains.time.TimeService;
+import br.com.pomodoro.domains.user.UserService;
 import br.com.pomodoro.exceptions.LogException;
-import br.com.pomodoro.models.Menu;
-import br.com.pomodoro.models.Time;
-import br.com.pomodoro.models.User;
+import br.com.pomodoro.domains.time.Time;
+import br.com.pomodoro.domains.user.User;
 
 import javax.swing.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

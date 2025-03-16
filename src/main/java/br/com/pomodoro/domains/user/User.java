@@ -1,4 +1,4 @@
-package br.com.pomodoro.models;
+package br.com.pomodoro.domains.user;
 
 public class User {
     private String name;
