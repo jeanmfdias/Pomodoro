@@ -17,34 +17,16 @@ public class PomodoroApplication {
 
 			try {
 				switch (choice) {
-					case JOptionPane.CLOSED_OPTION:
-						choice = 0;
-					case 0:
-						MenuService.bye();
-						break;
-					case 1:
-						base = MenuService.startTime(base);
-						break;
-					case 2:
-						base = MenuService.endTime(base);
-						break;
-					case 3:
-						MenuService.getLastTime(base);
-						break;
-					case 4:
-						MenuService.getAllTime(base);
-						break;
-					case 5:
-						base = MenuService.createUser(base);
-						break;
-					case 6:
-						MenuService.getAllUSers(base);
-						break;
-					case 7:
-						MenuService.saveLog(base);
-						break;
-					default:
-						throw new IllegalArgumentException("Invalid option!");
+					case JOptionPane.CLOSED_OPTION -> choice = 0;
+					case 0 -> MenuService.bye();
+					case 1 -> base = MenuService.startTime(base);
+					case 2 -> base = MenuService.endTime(base);
+					case 3 -> MenuService.getLastTime(base);
+					case 4 -> MenuService.getAllTime(base);
+					case 5 -> base = MenuService.createUser(base);
+					case 6 -> MenuService.getAllUSers(base);
+					case 7 -> MenuService.saveLog(base);
+					default -> throw new IllegalArgumentException("Invalid option!");
 				}
 			} catch (Throwable e) {
 				JOptionPane.showMessageDialog(null, "%s\n%s".formatted(e.getMessage(), e.getClass()),
